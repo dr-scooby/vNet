@@ -27,6 +27,42 @@ public class SMBBucket {
         return bucket.iterator();
     }
     
+    // find by IP
+    public smbdao findbyIP(String key){
+        smbdao sd = new smbdao();
+        smbdao sad ;
+        Iterator it = getIt();
+        while(it.hasNext()){
+            sad =  (smbdao) it.next();
+            if(sad.getIp().equals(key)){
+                sd.setIp(sad.getIp());
+                sd.setFilepath(sad.getFilepath());
+                sd.setFullpath(sad.getFullpath());
+            }
+                
+       }
+       
+       return sd;
+    }
+    
+    // find by full path, eg: 194.6.2.10\docs
+    public smbdao findbyFullPath(String key){
+        smbdao sd = new smbdao();
+       smbdao sad ;
+       Iterator it = getIt();
+       while(it.hasNext()){
+            sad =  (smbdao) it.next();
+            if(sad.getFullpath().equals(key)){
+                sd.setIp(sad.getIp());
+                sd.setFilepath(sad.getFilepath());
+                sd.setFullpath(sad.getFullpath());
+            }
+                
+       }
+       
+       return sd;
+    }
+    
    public smbdao getSMB(String key){
        smbdao sd = new smbdao();
        smbdao sad ;
